@@ -21,7 +21,7 @@ You will also need **Maven**, which is used to build and manage the project.
 
 To simplify the execution and testing of the application on various environments, I have conteunerised the application and created an image that has been pushed to Docker Hub, so it will be possible to download this image and run it.
 
-**Sample of data put in folder **
+**Sample of data put in folder src/main/resources/data,  for test**
 ## Solution
 Having events with the following fields: user_id, timestamp, event. We need to make sure there is only 1 event per combination of `user_id, timestamp, event` in our system
 (due to the nature of the pipeline producing events, you might receive the same event multiple times).
@@ -62,6 +62,7 @@ To run the application, you can use IDE that will be able to run the java progra
 
 ![MyApplicaiton](./images/MyApplication.png)
 
+**Sample of data put in folder src/main/resources/data,  for test**
 
 - To date it is possible to create an uber jar with maven:
 
@@ -90,7 +91,7 @@ To run the application, you can use IDE that will be able to run the java progra
     For the data to be taken into account when the application is launched, the folder containing the data must be mounted, as shown in the example below
     Example:  docker run -p 8080:8080  -v /Users/pauhappy/data:/data  yald/eventsaggregation:0.0.1
 
-## Additional questions
+## Go Further
 - With a larger volume of data, We need to ensure that have a database capable of handling the volume of data. As the format of the application isn't transactonal, I'd opt for a NoSQL database that would allow horizontal scaling, including parallel partioning and execution. 
   
   In our case, given that we're doing reactive programming, the requests are managed asynchronously, so there's already parallel execution in place. We'll need to be careful about back pressure.
